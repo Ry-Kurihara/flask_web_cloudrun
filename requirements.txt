@@ -1,0 +1,10 @@
+Flask==2.1.3
+gunicorn==20.1.0
+SQLAlchemy==1.4.39
+Flask-SQLAlchemy==2.5.1
+Flask-Login==0.6.1
+Flask-APscheduler==1.12.4
+Flask-Migrate==3.1.0
+werkzeug==2.1.0
+# Cloud Runで実行する場合は不要かも
+cloud-sql-python-connector[pg8000]==0.6.1

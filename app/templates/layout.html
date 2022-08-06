@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>AutoPurchaser On LINE AND Flask</title>
+<!-- Font Awesome ETC twitter facebook icon -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+<!-- Avant UI -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='avantui.css') }}">
+</head>
+
+<div class="container-fluid">
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <a class="navbar-brand" href="/">
+        <span class="text-primary">A</span>uto<span class="text-primary">P</span>urchaser
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar5" aria-controls="navbar5" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar5">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              {% if not current_user.is_authenticated %}
+                  <a class="nav-link active" aria-current="page" href="{{ url_for('webpage.login') }}">Login</a>
+              {% else %}
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Logined</a>
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('webpage.logout') }}">Logout</a>
+            </li>
+            {% if not current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('webpage.signup') }}">SignUp</a>
+                </li>
+            {% endif %}
+        </ul>
+        <ul class="nav mb-3 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link py-0 pl-0 pl-lg-3" href="#"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link py-0" href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link py-0" href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+</header>
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="blog-body">
+        {% block body %}{% endblock %}
+    </div>
+    
+<!-- Avant Ui Javascript -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='avantui.js') }}"></script>
+</body>
+</div>
