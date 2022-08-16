@@ -1,18 +1,52 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<div class="card" style="max-width: 500px;">
+<div class="card mb-3" style="max-width: 500px;">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="static/images/buranko_boy_smile.png" class="card-img rounded-0" alt="image">
+            <img src="static/images/robot.png" class="card-img rounded-0" alt="image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ url_for('webpage.display_my_profile') }}" class="stretched-link">Profile</a></h5>
+                <p class="card-text">
+                    Describes my background.
+                </p>
+                <p class="card-text"><small class="text-muted">login is needed.</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3" style="max-width: 500px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="static/images/robot.png" class="card-img rounded-0" alt="image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ url_for('webpage.display_user_list') }}" class="stretched-link">Line Bot</a></h5>
+                <p class="card-text">
+                    Send my detailed background and etc. in a line message.
+                </p>
+                <p class="card-text"><small class="text-muted">login is needed.</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3" style="max-width: 500px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="static/images/robot.png" class="card-img rounded-0" alt="image">
         </div>
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title"><a href="{{ url_for('webpage.display_user_list') }}" class="stretched-link">User List</a></h5>
                 <p class="card-text">
-                    list up for sing-up user
+                    List the users who have permission to view the content of this site.
                 </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <p class="card-text"><small class="text-muted">login is needed.</small></p>
             </div>
         </div>
     </div>

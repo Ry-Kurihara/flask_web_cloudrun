@@ -55,6 +55,8 @@ def create_app(test_config=None):
     # Add Blueprint
     from app.views.webpage import webpage
     app.register_blueprint(webpage, url_prefix='/')
+    from app.views.line import line 
+    app.register_blueprint(line, url_prefix='/')
 
     # initialize scheduler 
     # scheduler.init_app(app)

@@ -1,8 +1,19 @@
 ## MyPortfolio 
 
 ### 概要
-`https://flask-ut7dunfa5q-an.a.run.app/`に公開している。
+`https://flask-ut7dunfa5q-an.a.run.app/`に公開しています。
 
-### 使用ツール
+### Tools
+- System
+    - Flask
+    - Flask-Migrate
+    - Flask-Login
+    - Google Cloud SQL
+    - Google Cloud Run
+- Designe
+    - Bootstrap
+    - AvantUi
+
 
 ### Tips
+このアプリケーションで使用しているDBのスキーマ管理は[Migrationリポジトリ](https://github.com/Ry-Kurihara/flask_db_migration)で行なっています。
