@@ -1,4 +1,5 @@
 from google.cloud import secretmanager
+from google.auth.exceptions import DefaultCredentialsError
 
 PROJECT_ID = "233526485971" # selen-autopurchase GCPプロジェクト
 LINE_CHANNEL_ACCESS_TOKEN = "LINE_CHANNEL_ACCESS_TOKEN"
@@ -10,6 +11,9 @@ class SecretManagerUtil:
         name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
         response = client.access_secret_version(request={"name": name})
         return response.payload.data.decode("UTF-8")
+
+import logging
+logger = logging.getLogger('app.flask').getChild(__name__)
 
 """
 LINEメッセージ処理
@@ -57,6 +61,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
+    # TODO: Loggerを変えた時の出力を検証する
     app.logger.info("Request body: " + body)
 
     # handle webhook body

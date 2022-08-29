@@ -2,10 +2,8 @@
 from app import create_app
 app = create_app()
 
-import sys, os
-# sys.path.append(os.path.join(os.path.dirname(__file__), '../my_lib'))
-# import log_config as log
-# logger = log.setup_logger('app.flask')
+from app.my_lib import log_config
+logger = log_config.setup_logger('app.flask')
 
 # Flask-Migrate
 from flask_migrate import Migrate 
