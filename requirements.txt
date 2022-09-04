@@ -6,8 +6,7 @@ Flask-Login==0.6.1
 Flask-APscheduler==1.12.4
 Flask-Migrate==3.1.0
 werkzeug==2.1.0
-# Cloud Runで実行する場合は不要かも
-cloud-sql-python-connector[pg8000]==0.6.1
-# line.pyのメッセージ返信用パッケージ
-python-dateutil==2.8.2
+cloud-sql-python-connector[pg8000]==0.6.1 # Cloud Runで実行する場合は不要かも
+python-dateutil==2.8.2 # line.pyのメッセージ返信用パッケージ
 google-cloud-secret-manager==2.12.2
+line-bot-sdk==1.19.0
