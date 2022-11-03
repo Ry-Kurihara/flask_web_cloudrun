@@ -93,3 +93,7 @@ def display_user_list():
 @login_required 
 def display_my_profile():
     return render_template('profile.html')
+
+@webpage.route('/linebot')
+def display_linebot_info():
+    return render_template('linebot.html')

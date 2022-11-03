@@ -47,6 +47,8 @@ def create_app(test_config=None):
     login_manager.init_app(app)
 
     from app.models.users import User
+    # LineBaseMessagesは実装上使うことはないが、ここでimportしないとflask db migrateで検知されずテーブル作成できない
+    from app.models.line import LineBaseMessages 
 
     @login_manager.user_loader
     def load_user(user_id):

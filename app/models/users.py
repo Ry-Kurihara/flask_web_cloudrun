@@ -16,8 +16,3 @@ class User(UserMixin, db.Model):
 
     def get_id(self):
         return (self.user_id)
-
-# # Flask-Migrate動作テストのために一番簡単なテーブルを作成する
-# class FirstTableTest(db.Model):
-#     id_test = db.Column(db.Text, primary_key=True)
-#     name_test = db.Column(db.Text)

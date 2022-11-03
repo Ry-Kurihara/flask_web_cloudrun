@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4 mt-3 mt-lg-0">
+            <!-- LINE動画 -->
+            <div class="card card-article position-relative mb-4">
+                <video controls class="embed-responsive-item" src="static/movies/line_fifteen_howto.mov"></video>
+                <span class="card-tag position-absolute small text-white bg-warning rounded m-3 my-2 px-2 py-1">How to Use</span>
+                <div class="card-body">
+                    <h6 class="card-title">使い方</h6>
+                    <p class="card-text">My Portfolioを友達登録後、動画のようにトークルームで質問文を送信してください。</p>
+                </div>
+            </div>
+
+            <!-- QRコード -->
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-4 my-auto">
+                        <img width="150" height="150" src="https://qr-official.line.me/sid/M/927fbtyw.png?shortenUrl=true">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-title">LINE BOT QR CODE</h5>
+                            <p class="card-text">
+                                左のQRコードを読み取って友達登録できます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12 mb-4 mt-3 mt-lg-0">
+            <div class="card border-success">
+                <div class="card-body">
+                  <h5 class="card-title">自己紹介メッセージ</h5>
+                  <p class="card-text">返信が用意されているメッセージ一覧</p>
+                </div>
+            </div><!-- /div.class.card -->
+            <div class="accordion" id="accordion">
+                <div class="accordion-item">
+                    <h3 id="accordion-heading-1" class="collapsed d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#accordion-collapse-1" aria-expanded="true" aria-controls="accordion-collapse-1">
+                        github 
+                        <span class="accordion-icon">&#10005;</span>
+                    </h3>
+                    <div id="accordion-collapse-1" class="collapse" aria-labelledby="accordion-heading-1" data-parent="#accordion">
+                        <div class="px-3 pb-3">
+                          私が個人開発に使用しているgithubリポジトリのURLを返信します。
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 id="accordion-heading-2" class="collapsed d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#accordion-collapse-2" aria-expanded="true" aria-controls="accordion-collapse-2">
+                        年齢 
+                        <span class="accordion-icon">&#10005;</span>
+                    </h3>
+                    <div id="accordion-collapse-2" class="collapse" aria-labelledby="accordion-heading-2" data-parent="#accordion">
+                        <div class="px-3 pb-3">
+                          メッセージ送信時点での私の年齢を返信します。
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 id="accordion-heading-3" class="collapsed d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#accordion-collapse-3" aria-expanded="true" aria-controls="accordion-collapse-3">
+                        ガクチカ
+                        <span class="accordion-icon">&#10005;</span>
+                    </h3>
+                    <div id="accordion-collapse-3" class="collapse" aria-labelledby="accordion-heading-3" data-parent="#accordion">
+                        <div class="px-3 pb-3">
+                          私が学生時代に力を入れていたことを返信します。
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /div.class.accordion -->
+        </div>
+
+        <div class="col">
+            <img src="https://qr-official.line.me/sid/M/927fbtyw.png?shortenUrl=true">
+            <img src="https://qr-official.line.me/sid/M/927fbtyw.png?shortenUrl=true">
+            <img src="https://qr-official.line.me/sid/M/927fbtyw.png?shortenUrl=true">
+            <img src="https://qr-official.line.me/sid/M/927fbtyw.png?shortenUrl=true">
+            <img src="https://qr-official.line.me/sid/M/927fbtyw.png?shortenUrl=true">
+            <img src="https://qr-official.line.me/sid/M/927fbtyw.png?shortenUrl=true">
+        </div>
+    </div>
+</div>
+{% endblock %}
