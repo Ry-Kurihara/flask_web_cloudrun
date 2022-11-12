@@ -90,7 +90,6 @@ def display_user_list():
     return render_template('userlist.html', user_list=user_list)
 
 @webpage.route('/profile')
-@login_required 
 def display_my_profile():
     return render_template('profile.html')
 
