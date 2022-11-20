@@ -10,3 +10,4 @@ cloud-sql-python-connector[pg8000]==0.6.1 # Cloud Runで実行する場合は不
 python-dateutil==2.8.2 # line.pyのメッセージ返信用パッケージ
 google-cloud-secret-manager==2.12.2
 line-bot-sdk==1.19.0
+pandas==1.5.1
