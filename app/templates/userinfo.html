@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-lg-6 mb-4 mt-3 mt-lg-0"><!-- 左カラム -->
+            <h2>受信メッセージ履歴（直近20件）</h2>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">message</th>
+                            <th scope="col">timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message_history in message_histories %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ message_history.message }}</td>
+                                <td>{{ message_history.timestamp }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div><!-- 左カラム閉じ -->
+        <div class="col-xs-12 col-lg-6 mb-4 mt-3 mt-lg-0"><!-- 右カラム -->
+            <h2>登録ユーザー（Visible only to admin）</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">UserID</th>
+                        <th scope="col">UserName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in user_list %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ user.user_id }}</td>
+                            <td>{{ user.username }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div><!-- 右カラム閉じ -->
+    </div>
+</div>
+
+{% endblock %}

@@ -6,6 +6,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 
 from app.models.users import User
+from app.models.line import MessageHistory
+from sqlalchemy import desc
 from app import db
 
 webpage = Blueprint('webpage', __name__)
@@ -83,11 +85,19 @@ def logout():
     flash('ログアウトしました')
     return redirect(url_for('webpage.display_top_page'))
 
-@webpage.route('/userlist')
+# TODO: userinfoができたら削除
+# @webpage.route('/userlist')
+# @login_required
+# def display_user_list():
+#     user_list = User.query.all()
+#     return render_template('userlist.html', user_list=user_list)
+
+@webpage.route('/info/<string:user_id>') # HACK: 本当はURLにはusernameを表示させたい
 @login_required
-def display_user_list():
+def display_user_info(user_id):
     user_list = User.query.all()
-    return render_template('userlist.html', user_list=user_list)
+    message_histories = MessageHistory.query.filter(MessageHistory.user_id == user_id).order_by(desc(MessageHistory.timestamp)).limit(20).all()
+    return render_template('userinfo.html', user_list=user_list, message_histories=message_histories)
 
 @webpage.route('/profile')
 def display_my_profile():

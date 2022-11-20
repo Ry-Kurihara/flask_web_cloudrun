@@ -1,5 +1,7 @@
 from google.cloud import secretmanager
 from google.auth.exceptions import DefaultCredentialsError
+import pandas as pd 
+from app import engine
 
 PROJECT_ID = "233526485971" # selen-autopurchase GCPプロジェクト
 LINE_CHANNEL_ACCESS_TOKEN = "LINE_CHANNEL_ACCESS_TOKEN"
@@ -75,9 +77,15 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    text = event.message.text 
+    user_id = str(event.source.user_id)
+    timestamp = str(event.timestamp)
+    message = event.message.text 
 
-    if 'github' in text:
+    # メッセージをデータベースに保存する
+    df = pd.DataFrame(data=[[user_id, timestamp, message]], columns=['user_id', 'timestamp', 'message'])
+    df.to_sql('line_message_history', con=engine, if_exists='append', index=False)
+
+    if 'github' in message:
         send_text1 = TextSendMessage(text='拝承')
         send_text2 = TextSendMessage(text='https://github.com/Ry-Kurihara?tab=repositories')
         line_bot_api.reply_message(
@@ -86,7 +94,7 @@ def handle_text_message(event):
                 send_text2
             ]
         )
-    elif '年齢' in text:
+    elif '年齢' in message:
         age_obj = get_age_obj(1995, 12, 27)
         send_text1 = TextSendMessage(f"{age_obj.years}歳と{age_obj.months}ヶ月と{age_obj.days}日ニナリマス")
         line_bot_api.reply_message(

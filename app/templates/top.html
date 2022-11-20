@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title"><a href="{{ url_for('webpage.display_user_list') }}" class="stretched-link">Database</a></h5>
+                <h5 class="card-title"><a href="{{ url_for('webpage.display_user_info', user_id=current_user.user_id) }}" class="stretched-link">Database</a></h5>
                 <p class="card-text">
                     Display a list of messages sent to the bot so far. And etc.
                 </p>

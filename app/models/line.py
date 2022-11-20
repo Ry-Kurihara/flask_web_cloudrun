@@ -1,6 +1,9 @@
 from app import db
 
 class LineBaseMessages(db.Model):
+    """
+    LineBotが返すための定型文
+    """
     __tablename__ = 'line_base_message'
     __table_args__ = {'extend_existing': True}
     base_msg = db.Column(db.Text, unique=True, primary_key=True)
