@@ -1,0 +1,3 @@
+[submodule "migrations"]
+	path = migrations
+	url = git@github.com:Ry-Kurihara/flask_db_migration.git
