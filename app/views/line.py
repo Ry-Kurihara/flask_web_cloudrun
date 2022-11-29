@@ -1,18 +1,11 @@
-from google.cloud import secretmanager
-from google.auth.exceptions import DefaultCredentialsError
 import pandas as pd 
 from app import engine
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../lib/'))
+from google_sm import SecretManagerUtil
 
-PROJECT_ID = "233526485971" # selen-autopurchase GCPプロジェクト
 LINE_CHANNEL_ACCESS_TOKEN = "LINE_CHANNEL_ACCESS_TOKEN"
 LINE_CHANNEL_SECRET = "LINE_CHANNEL_SECRET"
-
-class SecretManagerUtil:
-    def get_secret(self, project_id: str, secret_id: str) -> str:
-        client = secretmanager.SecretManagerServiceClient()
-        name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
-        response = client.access_secret_version(request={"name": name})
-        return response.payload.data.decode("UTF-8")
 
 import logging
 logger = logging.getLogger('app.flask').getChild(__name__)
@@ -35,8 +28,8 @@ from linebot.models import (
 )
 
 sm_utl = SecretManagerUtil()
-line_cat = sm_utl.get_secret(PROJECT_ID, LINE_CHANNEL_ACCESS_TOKEN)
-line_cs = sm_utl.get_secret(PROJECT_ID, LINE_CHANNEL_SECRET)
+line_cat = sm_utl.get_secret(LINE_CHANNEL_ACCESS_TOKEN)
+line_cs = sm_utl.get_secret(LINE_CHANNEL_SECRET)
 
 line_bot_api = LineBotApi(line_cat)
 handler = WebhookHandler(line_cs)

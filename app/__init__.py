@@ -5,6 +5,7 @@ from flask_login import LoginManager
 
 from google.cloud.sql.connector import Connector 
 from sqlalchemy import create_engine
+from lib.google_sm import SecretManagerUtil
 
 db = SQLAlchemy()
 # scheduler = APScheduler()
@@ -19,12 +20,15 @@ db = SQLAlchemy()
 connector = Connector()
 
 # function to return the database connection
+sm_utl = SecretManagerUtil()
+user = sm_utl.get_secret("POSTGRES_MAIN_USER_MP")
+password = sm_utl.get_secret("POSTGRES_MAIN_USER_PASS_MP")
 def getconn():
     conn = connector.connect(
         "selen-autopurchase:asia-northeast1:autopurchaser-ins",
         "pg8000",
-        user="postgres",
-        password="purchase7",
+        user=user,
+        password=password,
         db="autopurchaser_db"
     )
     return conn
