@@ -3,6 +3,7 @@ from app import engine
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), '../../lib/'))
 from google_sm import SecretManagerUtil
+import textwrap 
 
 LINE_CHANNEL_ACCESS_TOKEN = "LINE_CHANNEL_ACCESS_TOKEN"
 LINE_CHANNEL_SECRET = "LINE_CHANNEL_SECRET"
@@ -93,6 +94,16 @@ def handle_text_message(event):
         line_bot_api.reply_message(
             event.reply_token, [
                 send_text1
+            ]
+        )
+    elif 'ガクチカ' in message:
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text=textwrap.dedent("""
+                    学生時代では、講義や研究以外でもプログラム言語やマークアップ言語に出来るだけ触れるように意識していました。最近では、多くのサービスがインターネット上で展開されているため、自分から何かを発信したいと思った時にプログラミング力やデザイン技術は、必ず自分の役に立つと思っています。 
+                    具体的にしたこととして、WordPressの独自デザインテンプレートを作成した経験があります。これにはHTMLやCSS、少しのPHP知識を必要とするため、それらを勉強しながらデザインを構築していくことで実践的な技術が身につきました。 
+                    その経験を活かして、研究室の同期と共同で地域の歯科医院の公式ホームページの作成を担当しています。院長から、こういったサイトにしたいという要望を聞き、その要望に近づけるようにサイトを制作していくという、企業に勤める上で必要となる能力を鍛える貴重な機会にもなっています。 
+                """))
             ]
         )
     else:
